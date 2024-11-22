@@ -9,6 +9,12 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
+const delay = () => {
+  console.log('hello there fetch')
+  new Promise(resolve => setTimeout(resolve, 50000))
+  console.log('finished')
+}
+
 export async function fetchRevenue() {
   try {
     // Artificially delay a response for demo purposes.
@@ -157,7 +163,7 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-
+    console.log(invoice);
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
